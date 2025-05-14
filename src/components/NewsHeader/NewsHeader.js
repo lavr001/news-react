@@ -7,7 +7,7 @@ const NewsHeader = () => {
     <header className="header-container">
       <div className="header-logo">
         <img className="logo" src={globalLogo} alt="Global News logo" />
-        <h3>Marko News</h3>
+        <h3>Global News</h3>
       </div>
       <nav className="header-nav" aria-label="Main navigation">
         <ul>

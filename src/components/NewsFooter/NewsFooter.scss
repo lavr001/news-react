@@ -20,12 +20,6 @@
   flex-direction: column;
   gap: 0.25rem;
   font-size: 0.9rem;
-
-  .disclaimer {
-    // This class was in the Less but not in the Marko HTML, kept for now
-    max-width: 400px;
-    line-height: 1.3;
-  }
 }
 
 .footer-links {
@@ -49,12 +43,6 @@
       &:hover,
       &:focus {
         opacity: 0.8;
-      }
-
-      /* Ensures a visible focus outline for accessibility */
-      &:focus {
-        outline: 2px solid #fff; /* Consider a different color than #fff if background is light */
-        outline-offset: 2px;
       }
     }
   }
