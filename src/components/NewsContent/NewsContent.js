@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./NewsContent.scss";
 
-const API_KEY = "41a1e43cc9ec4c449dde8c8598ccff6a"; // In a real app, use environment variables
-
 const NewsContent = () => {
   const [query, setQuery] = useState("Apple");
   const [searchTerm, setSearchTerm] = useState("Apple"); // To hold the term for actual search
@@ -30,9 +28,9 @@ const NewsContent = () => {
     const day = targetDate.getDate().toString().padStart(2, "0");
     const formattedDate = `${year}-${month}-${day}`;
 
-    const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(
+    const url = `/api/news?q=${encodeURIComponent(
       queryToFetch
-    )}&from=${formattedDate}&sortBy=popularity&apiKey=${API_KEY}`;
+    )}&from=${formattedDate}&sortBy=popularity`;
 
     fetch(url)
       .then((response) => response.json())

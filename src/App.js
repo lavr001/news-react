@@ -2,13 +2,13 @@ import React from "react";
 import "./App.scss";
 import NewsHeader from "./components/NewsHeader/NewsHeader";
 import NewsFooter from "./components/NewsFooter/NewsFooter";
-import NewsContent from "./components/NewsContent/NewsContent"; // Import NewsContent
+import NewsContent from "./components/NewsContent/NewsContent";
 
 function App() {
   return (
     <div className="App">
       <NewsHeader />
-      <NewsContent /> {/* Render NewsContent */}
+      <NewsContent />
       <NewsFooter />
     </div>
   );
