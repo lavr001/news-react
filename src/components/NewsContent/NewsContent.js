@@ -3,24 +3,23 @@ import "./NewsContent.scss";
 
 const NewsContent = () => {
   const [query, setQuery] = useState("Apple");
-  const [searchTerm, setSearchTerm] = useState("Apple"); // To hold the term for actual search
+  const [searchTerm, setSearchTerm] = useState("Apple");
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(5);
+  const [perPage, setPerPage] = useState(6);
 
   const fetchArticles = useCallback((queryToFetch) => {
     setLoading(true);
     setError(null);
-    // setArticles([]); // Optionally clear articles while loading new ones
 
     const currentDate = new Date();
     const targetDate = new Date(currentDate);
     targetDate.setMonth(targetDate.getMonth() - 1);
 
     if (targetDate.getDate() !== currentDate.getDate()) {
-      targetDate.setDate(0); // Set to the last day of the previous month
+      targetDate.setDate(0);
     }
 
     const year = targetDate.getFullYear();
@@ -51,20 +50,20 @@ const NewsContent = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []); // API_KEY is a constant, setters are stable
+  }, []);
 
   useEffect(() => {
-    fetchArticles(searchTerm); // Fetch based on searchTerm
-  }, [fetchArticles, searchTerm]); // Trigger fetch when searchTerm changes or on initial mount
+    fetchArticles(searchTerm);
+  }, [fetchArticles, searchTerm]);
 
   const handleInputChange = (event) => {
-    setQuery(event.target.value); // Update query as user types
+    setQuery(event.target.value);
   };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     setCurrentPage(1);
-    setSearchTerm(query); // Set searchTerm to trigger fetch via useEffect
+    setSearchTerm(query);
   };
 
   const handlePerPageChange = (event) => {
@@ -107,9 +106,9 @@ const NewsContent = () => {
           />
           <button type="submit">Search</button>
           <select onChange={handlePerPageChange} value={perPage}>
-            <option value="5">5 per page</option>
-            <option value="10">10 per page</option>
-            <option value="20">20 per page</option>
+            <option value="6">6 per page</option>
+            <option value="9">9 per page</option>
+            <option value="12">12 per page</option>
           </select>
         </form>
       </div>

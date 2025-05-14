@@ -1,13 +1,8 @@
-\ .App {
-  max-width: 960px; /* Sets a max width for the main content area */
-  margin: 2rem auto; /* Centers the content block on the page with top/bottom margin */
-  padding: 1.5rem; /* Padding inside the content block */
-  background-color: #fff; /* White background for the content block */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a "card" effect */
-  border-radius: 8px; /* Optional: rounded corners for the content block */
+.App {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
-
-/* Styles for App.css from create-react-app, if any were there, are removed
-   as we are focusing on the new structure.
-   If you had specific .App-logo, .App-header, .App-link styles you need,
-   they would need to be re-evaluated in context of the new components. */
