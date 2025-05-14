@@ -5,6 +5,7 @@
   justify-content: space-between;
   padding: 1rem;
   border-bottom: 1px solid #333;
+  position: relative;
 
   .header-logo {
     display: flex;
@@ -22,6 +23,29 @@
       font-size: 1.2rem;
       font-weight: bold;
       margin: 0;
+    }
+  }
+
+  .burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+
+    .burger-line {
+      width: 2rem;
+      height: 0.25rem;
+      background: #333;
+      border-radius: 10px;
+      transition: all 0.3s linear;
+      position: relative;
+      transform-origin: 1px;
     }
   }
 
@@ -47,12 +71,62 @@
           opacity: 0.8;
         }
 
-        /* Ensures a visible focus outline for accessibility */
         &:focus {
-          outline: 2px solid #fff; /* Consider a different color than #fff if background is light */
+          outline: 2px solid #fff;
           outline-offset: 2px;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .header-container {
+    .burger-menu {
+      display: flex;
+    }
+
+    .header-nav {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      border-top: 1px solid #eee;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      z-index: 5;
+
+      &.open {
+        display: flex;
+      }
+
+      ul {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+
+        li {
+          width: 100%;
+          text-align: center;
+          padding: 0.5rem 0;
+        }
+      }
+    }
+
+    .burger-menu.open .burger-line:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    .burger-menu.open .burger-line:nth-child(2) {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    .burger-menu.open .burger-line:nth-child(3) {
+      transform: rotate(-45deg);
     }
   }
 }

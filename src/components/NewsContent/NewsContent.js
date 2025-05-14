@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
-import "./NewsContent.scss";
+import SearchBar from "../SearchBar/SearchBar";
+import NewsList from "../NewsList/NewsList";
+import Pagination from "../Pagination/Pagination";
 
 const NewsContent = () => {
   const [query, setQuery] = useState("Apple");
@@ -92,95 +94,25 @@ const NewsContent = () => {
 
   return (
     <>
-      <div className="search-bar">
-        <form
-          role="search"
-          aria-label="Search for news"
-          onSubmit={handleSearchSubmit}
-        >
-          <input
-            type="search"
-            placeholder="Search news..."
-            value={query}
-            onChange={handleInputChange}
-          />
-          <button type="submit">Search</button>
-          <select onChange={handlePerPageChange} value={perPage}>
-            <option value="6">6 per page</option>
-            <option value="9">9 per page</option>
-            <option value="12">12 per page</option>
-          </select>
-        </form>
-      </div>
+      <SearchBar
+        query={query}
+        onQueryChange={handleInputChange}
+        onSearchSubmit={handleSearchSubmit}
+        perPage={perPage}
+        onPerPageChange={handlePerPageChange}
+      />
 
       <main>
-        {loading && <div className="loading">Loading news...</div>}
-        {!loading && error && <div className="error-message">{error}</div>}
-        {!loading &&
-          !error &&
-          articles.length === 0 &&
-          currentArticles.length === 0 && (
-            <div className="no-news">No news articles found.</div>
-          )}
-        {!loading && !error && currentArticles.length > 0 && (
-          <div className="cards-container">
-            {currentArticles.map((article) => (
-              <article className="card" key={article.url || article.title}>
-                <div className="card-content">
-                  <div className="card-source">
-                    {article.source?.name}
-                    {article.author &&
-                      article.author !== article.source?.name && (
-                        <span className="author">by {article.author}</span>
-                      )}
-                  </div>
-                  <h3 className="card-title">
-                    <a
-                      href={article.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {article.title}
-                    </a>
-                  </h3>
-                  {article.description && (
-                    <div className="card-description">
-                      {article.description}
-                    </div>
-                  )}
-                  {article.publishedAt && (
-                    <div className="card-date">
-                      Published:{" "}
-                      {new Date(article.publishedAt).toLocaleDateString()}
-                    </div>
-                  )}
-                </div>
-                {article.urlToImage && (
-                  <div className="card-image">
-                    <img
-                      src={article.urlToImage}
-                      alt={article.title || "Article image"}
-                    />
-                  </div>
-                )}
-              </article>
-            ))}
-          </div>
-        )}
+        <NewsList articles={currentArticles} loading={loading} error={error} />
       </main>
 
-      {!loading && !error && articles.length > 0 && totalPages > 1 && (
-        <div className="pagination">
-          <button onClick={handlePrevPage} disabled={currentPage === 1}>
-            Previous
-          </button>
-          <span>
-            Page {currentPage} of {totalPages || 1}
-          </span>
-          <button onClick={handleNextPage} disabled={currentPage >= totalPages}>
-            Next
-          </button>
-        </div>
+      {!loading && !error && articles.length > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPrevPage={handlePrevPage}
+          onNextPage={handleNextPage}
+        />
       )}
     </>
   );
