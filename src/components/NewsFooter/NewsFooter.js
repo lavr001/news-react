@@ -6,7 +6,7 @@ const NewsFooter = () => {
     <footer className="footer-container">
       <div className="footer-content">
         <div className="footer-brand">
-          <p>&copy; 2025 Marko News App</p>
+          <p>&copy; 2025 Global News</p>
         </div>
         <nav className="footer-links" aria-label="Footer navigation">
           <ul>
