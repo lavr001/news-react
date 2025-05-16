@@ -18,11 +18,7 @@ const NewsContent = () => {
 
     const currentDate = new Date();
     const targetDate = new Date(currentDate);
-    targetDate.setMonth(targetDate.getMonth() - 1);
-
-    if (targetDate.getDate() !== currentDate.getDate()) {
-      targetDate.setDate(0);
-    }
+    targetDate.setDate(currentDate.getDate() - 20);
 
     const year = targetDate.getFullYear();
     const month = (targetDate.getMonth() + 1).toString().padStart(2, "0");
