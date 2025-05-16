@@ -94,8 +94,6 @@ const NewsContent = () => {
         query={query}
         onQueryChange={handleInputChange}
         onSearchSubmit={handleSearchSubmit}
-        perPage={perPage}
-        onPerPageChange={handlePerPageChange}
       />
 
       <main>
@@ -108,6 +106,8 @@ const NewsContent = () => {
           totalPages={totalPages}
           onPrevPage={handlePrevPage}
           onNextPage={handleNextPage}
+          perPage={perPage}
+          onPerPageChange={handlePerPageChange}
         />
       )}
     </>

@@ -6,6 +6,7 @@
   padding: 1rem;
   border-bottom: 1px solid #333;
   position: relative;
+  background-color: #fff;
 
   .header-logo {
     display: flex;
@@ -80,7 +81,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .header-container {
     .burger-menu {
       display: flex;

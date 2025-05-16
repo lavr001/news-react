@@ -1,13 +1,7 @@
 import React from "react";
 import "./SearchBar.scss";
 
-const SearchBar = ({
-  query,
-  onQueryChange,
-  onSearchSubmit,
-  perPage,
-  onPerPageChange,
-}) => {
+const SearchBar = ({ query, onQueryChange, onSearchSubmit }) => {
   return (
     <div className="search-bar">
       <form
@@ -23,11 +17,6 @@ const SearchBar = ({
         />
         <div className="search-actions">
           <button type="submit">Search</button>
-          <select onChange={onPerPageChange} value={perPage}>
-            <option value="6">6 per page</option>
-            <option value="9">9 per page</option>
-            <option value="12">12 per page</option>
-          </select>
         </div>
       </form>
     </div>

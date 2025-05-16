@@ -7,7 +7,7 @@
   form {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
 
     input[type="search"] {
       flex: 1;
@@ -25,15 +25,13 @@
     .search-actions {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
     }
 
-    button,
-    select {
+    button {
       border: none;
       background: #333;
       color: #fff;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 1.5rem;
       cursor: pointer;
       font-size: 1rem;
       border-radius: 4px;
@@ -48,29 +46,23 @@
       }
     }
 
-    select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-    }
+    // @media (max-width: 640px) {
+    //   flex-direction: column;
+    //   align-items: center;
+    //   gap: 1rem;
 
-    @media (max-width: 640px) {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
+    //   input[type="search"] {
+    //     width: 90%;
+    //     flex-grow: 0;
+    //     flex-shrink: 0;
+    //   }
 
-      input[type="search"] {
-        width: 90%;
-        flex-grow: 0;
-        flex-shrink: 0;
-      }
-
-      .search-actions {
-        width: 90%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
+    //   .search-actions {
+    //     width: 90%;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //   }
+    // }
   }
 }
