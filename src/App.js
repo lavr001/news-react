@@ -1,10 +1,9 @@
-import React from "react";
 import "./App.scss";
 import NewsHeader from "./components/NewsHeader/NewsHeader";
 import NewsFooter from "./components/NewsFooter/NewsFooter";
 import NewsContent from "./components/NewsContent/NewsContent";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <NewsHeader />
@@ -12,6 +11,6 @@ function App() {
       <NewsFooter />
     </div>
   );
-}
+};
 
 export default App;

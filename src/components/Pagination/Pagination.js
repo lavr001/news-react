@@ -9,7 +9,6 @@ const Pagination = ({
   perPage,
   onPerPageChange,
 }) => {
-  // Condition to render nothing if totalPages is 1 or less, and also no perPage/onPerPageChange is provided (for graceful degradation if used elsewhere without these)
   if (totalPages <= 1 && (!perPage || !onPerPageChange)) {
     return null;
   }
