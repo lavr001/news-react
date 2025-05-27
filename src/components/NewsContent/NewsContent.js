@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import NewsList from "../NewsList/NewsList";
 import Pagination from "../Pagination/Pagination";
+import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
 
 const NewsContent = () => {
   const [query, setQuery] = useState("Apple");
@@ -89,18 +90,23 @@ const NewsContent = () => {
   );
 
   return (
-    <>
+    <main>
       <SearchBar
         query={query}
         onQueryChange={handleInputChange}
         onSearchSubmit={handleSearchSubmit}
       />
-
-      <main>
-        <NewsList articles={currentArticles} loading={loading} error={error} />
-      </main>
-
+      {loading && <p className="loading-message">Loading news...</p>}
+      {error && <p className="error-message">Error: {error}</p>}
+      {!loading && !error && articles.length === 0 && (
+        <p className="no-articles-message">
+          No articles found. Try a different search.
+        </p>
+      )}
       {!loading && !error && articles.length > 0 && (
+        <NewsList articles={currentArticles} />
+      )}
+      {totalPages > 1 && (
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
@@ -110,7 +116,8 @@ const NewsContent = () => {
           onPerPageChange={handlePerPageChange}
         />
       )}
-    </>
+      <ScrollToTopButton />
+    </main>
   );
 };
 
